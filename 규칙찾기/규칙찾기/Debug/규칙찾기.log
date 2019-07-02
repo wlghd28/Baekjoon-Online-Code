@@ -1,0 +1,3 @@
+﻿  소스.c
+c:\users\mycom\desktop\프로그래밍\자료\백준알고리즘\규칙찾기\규칙찾기\소스.c(7): warning C4101: 'accumulate' :참조되지 않은 지역 변수입니다.
+  규칙찾기.vcxproj -> C:\Users\mycom\Desktop\프로그래밍\자료\백준알고리즘\규칙찾기\Debug\규칙찾기.exe
