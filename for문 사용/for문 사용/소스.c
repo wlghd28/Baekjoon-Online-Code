@@ -3,6 +3,13 @@
 #include <string.h>
 int main(void)
 {
+	
+	/*
+	int A, B;
+	while (scanf("%d %d", &A, &B) != EOF) {
+		printf("%d\n", A + B);
+	}
+	*/
 	/*
 	int N,Total = 0;
 	scanf_s("%d", &N);
@@ -122,5 +129,6 @@ int main(void)
 			break;
 	}
 	*/
+
 	return 0;
 }

@@ -89,6 +89,23 @@ int main(void)
 
 	free(P);
 	*/
+	/*
+	int H, M;
+	scanf_s("%d %d", &H, &M);
+
+	if (M - 45 < 0) {
+		H--;
+		if (H < 0) {
+			printf("%d %d\n", 24 + H, 15 + M);
+		}
+		else {
+			printf("%d %d\n", H, 15 + M);
+		}
+	}
+	else {
+		printf("%d %d\n", H, M - 45);
+	}
+	*/
 	return 0;
 }
 /*

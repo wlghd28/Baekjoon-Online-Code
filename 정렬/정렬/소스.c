@@ -1,21 +1,58 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//void Merge(int start, int T, int N); // 합병정렬.
-//void MergeSort(int start, int T, int N); // 합병정렬.
-//static int Sort[1050000]; // 정렬되지 않은 배열.
-//static int Temp[1050000]; // 빈 배열.
+/*
+void Merge(int start, int T, int N); // 합병정렬.
+void MergeSort(int start, int T, int N); // 합병정렬.
+static int Sort[1050000]; // 정렬되지 않은 배열.
+static int Temp[1050000]; // 빈 배열.
+*/
 //void CountingSort(int* Count, int size, int N); // 카운팅 정렬.
 //int average(int* S,int N);
 //int frecency(int* Count, int size);
+/*
 struct Word {
 	char W[51]; // 단어를 받을 배열.
 	int Mark; // 단어의 중복여부 판단 변수.
 	int Length; // 단어의 길이.
 };
 int MyCompare(const void* A, const void* B);
+*/
+/*
+struct USER {
+	int age; // 회원의 나이
+	int number; // 가입한 순서
+};
+struct NAME {
+	char name[101];
+};
+struct USER* user;
+struct NAME* name;
+int Compare(const void* A, const void* B);
+*/
 int main(void)
 {
+	/*
+	int N;
+	scanf_s("%d", &N);
+	user = (struct USER*)malloc(sizeof(struct USER) * N);
+	name = (struct NAME*)malloc(sizeof(struct NAME)* N);
+
+	for (int i = 0; i < N; i++) {
+		scanf_s("%d", &user[i].age);
+		user[i].number = i;
+		getchar();
+		gets_s(name[i].name, 100);
+	}
+	qsort(user, N, sizeof(struct USER), Compare);
+
+	for (int i = 0; i < N; i++) {
+		printf("%d %s\n", user[i].age, name[user[i].number].name);
+	}
+	free(user);
+	free(name);
+	*/
+	/*
 	int N, Max = 0; // swap : 사전순으로 인덱스를 정렬할때 쓰일 교환변수.
 	scanf_s("%d", &N);
 	struct Word* S = (struct Word*)malloc(sizeof(struct Word)*N);
@@ -54,7 +91,7 @@ int main(void)
 		}
 	}
 	free(S);
-
+	*/
 	/* 통계학
 	int N, i = 0;
 	int* S;
@@ -152,12 +189,25 @@ int main(void)
 
 	return 0;
 }
+/*
+int Compare(const void* A, const void* B)
+{
+	struct USER* p1 = (struct USER*)A;
+	struct USER* p2 = (struct USER*)B;
+	if (p1->age != p2->age)
+		return p1->age - p2->age;
+	else
+		return p1->number - p2->number;
+}
+*/
+/*
 int MyCompare(const void* A, const void* B)
 {
 	struct Word * p1 = (struct Word*)A;
 	struct Word * p2 = (struct Word*)B;
 	return strcmp(p1->W, p2->W);
 }
+*/
 /*
 int average(int* S, int N) // 산술평균
 {

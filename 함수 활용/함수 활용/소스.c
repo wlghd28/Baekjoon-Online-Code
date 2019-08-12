@@ -9,11 +9,52 @@ void PrintStar(int N);
 void PrintTriangle(int x, int y);
 void PrintEmpty(int x, int y);
 */
+//char arr[2187][2187];
+//void PrintEmpty(int N, int istart, int jstart);
 //int ReturnNumber(int N);
-int KaprekarNumber(int N);
-int SelfNumber(int N, int* S, int size);
+//int KaprekarNumber(int N);
+//int SelfNumber(int N, int* S, int size);
+//long long factorial(int N);
+//int TotalCount = 1;
+void HanoiTop(int count1, int count2, int N, int A, int B);
+int Count(int N);
 int main(void)
 {
+	int N;
+	scanf_s("%d", &N);
+
+	printf("%d\n", Count(N));
+	HanoiTop(1, 1, N, 1, 3);
+
+
+	/*
+	int N;
+	scanf_s("%d", &N);
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			arr[i][j] = '*';
+		}
+	}
+	PrintEmpty(N, 0, 0);
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			printf("%c", arr[i][j]);
+		}
+		printf("\n");
+	}
+	*/
+	/*
+	int N;
+	scanf_s("%d", &N);
+
+	factorial(N);
+	*/
+	/*
 	int S[10000] = { 0 };
 	for (int i = 0; i < 10000; i++)
 	{
@@ -24,7 +65,7 @@ int main(void)
 		if (SelfNumber(i, S, 10000) == 0)
 			printf("%d\n", i);
 	}
-
+	*/
 	// 한수 갯수 구하기
 	/*
 	int N;
@@ -61,6 +102,81 @@ int main(void)
 
 	return 0;
 }
+void HanoiTop(int count1, int count2, int N, int A, int B)
+{
+	if (count1 > N || count2 > N) 
+		return;
+	if (A == 1 && B == 3) {
+		HanoiTop(++count1, count2, N, 1, 2);
+		printf("1 3\n");
+		HanoiTop(count1, ++count2, N, 2, 3);
+	}
+	else if (A == 1 && B == 2) {
+		HanoiTop(++count1, count2, N, 1, 3);
+		printf("1 2\n");
+		HanoiTop(count1, ++count2, N, 3, 2);
+	}
+	else if (A == 3 && B == 2) {
+		HanoiTop(++count1, count2, N, 3, 1);
+		printf("3 2\n");
+		HanoiTop(count1, ++count2, N, 1, 2);
+	}
+	else if (A == 2 && B == 1) {
+		HanoiTop(++count1, count2, N, 2, 3);
+		printf("2 1\n");
+		HanoiTop(count1, ++count2, N, 3, 1);
+	}
+	else if (A == 2 && B == 3) {
+		HanoiTop(++count1, count2, N, 2, 1);
+		printf("2 3\n");
+		HanoiTop(count1, ++count2, N, 1, 3);
+	}
+	else if (A == 3 && B == 1){
+		HanoiTop(++count1, count2, N, 3, 2);
+		printf("3 1\n");
+		HanoiTop(count1, ++count2, N, 2, 1);
+	}
+} 
+int Count(int N)
+{
+	int count = 1;
+	for (int i = 0; i < N; i++) {
+		count *= 2;
+	}
+	return count - 1;
+}
+/*
+void PrintEmpty(int N, int istart, int jstart)
+{
+	for (int i = istart + N / 3; i < istart + (N / 3) * 2; i++) {
+		for (int j = jstart + N / 3; j < jstart + (N / 3) * 2; j++) {
+			arr[i][j] = ' ';
+		}
+	}
+	if (N == 3)
+		return;
+	PrintEmpty(N / 3, istart, jstart);
+	PrintEmpty(N / 3, istart + N / 3, jstart);
+	PrintEmpty(N / 3, istart + (N / 3) * 2, jstart);
+	PrintEmpty(N / 3, istart, jstart + N / 3);
+	PrintEmpty(N / 3, istart + (N / 3) * 2, jstart + N / 3);
+	PrintEmpty(N / 3, istart, jstart + (N / 3) * 2);
+	PrintEmpty(N / 3, istart + N / 3, jstart + (N / 3) * 2);
+	PrintEmpty(N / 3, istart + (N / 3) * 2, jstart + (N / 3) * 2);
+
+}
+*/
+/*
+long long factorial(int N)
+{
+	long long total = 1;
+	for (int i = 0; i < N; i++) {
+		total *= N - i;
+	}
+	return total;
+}
+*/
+/*
 int SelfNumber(int N, int* S, int size)
 {
 	for (int i = 0; i < 10000; i++)
@@ -71,6 +187,8 @@ int SelfNumber(int N, int* S, int size)
 	}
 	return 0;
 }
+*/
+/*
 int KaprekarNumber(int N)
 {
 	int M;
@@ -95,6 +213,7 @@ int KaprekarNumber(int N)
 
 	return N + M;
 }
+*/
 /*
 int ReturnNumber(int N)
 {

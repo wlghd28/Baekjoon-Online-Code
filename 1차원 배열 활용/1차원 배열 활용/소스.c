@@ -4,7 +4,60 @@
 
 //void Score(char* Q, int size, int* T, int i);
 int main(void)
-{
+{      
+	int N, count = 0;
+	int Mark[42];
+	for (int i = 0; i < 10; i++) {
+		scanf_s("%d", &N);
+		Mark[N % 42] = 1;
+	}
+
+	for (int i = 0; i < 42; i++) {
+		if (Mark[i] == 1)
+			count++;
+	}
+
+	printf("%d\n", count);
+	/*
+	int MAX, Number, count = 0;
+	for (int i = 0; i < 9; i++) {
+		scanf_s("%d", &Number);
+		if (i == 0) {
+			MAX = Number;
+			count = i + 1;
+		}
+		else {
+			if (Number > MAX) {
+				MAX = Number;
+				count = i + 1;
+			}
+		}
+	}
+	printf("%d\n", MAX);
+	printf("%d\n", count);
+	*/
+	/*
+	int N, MAX, MIN, Number;
+	scanf_s("%d", &N);
+
+	for (int i = 0; i < N; i++) {
+	scanf_s("%d", &Number);
+	if (i == 0) {
+	MAX = Number;
+	MIN = Number;
+	}
+	else {
+	if (Number > MAX) {
+	MAX = Number;
+	}
+	if (Number < MIN) {
+	MIN = Number;
+	}
+	}
+	}
+	printf("%d %d\n", MIN, MAX);
+	*/
+	/*
 	int S[5];
 	int Total = 0;
 	for (int i = 0; i < 5; i++)
@@ -20,6 +73,7 @@ int main(void)
 		Total += S[i];
 	}
 	printf("%d\n", Total / 5);
+	*/
 	/*
 	//다장조는 c d e f g a b C, 총 8개 음으로 이루어져있다. 
 	//이 문제에서 8개 음은 다음과 같이 숫자로 바꾸어 표현한다. 
