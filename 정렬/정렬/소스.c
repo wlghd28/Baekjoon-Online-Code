@@ -30,8 +30,41 @@ struct USER* user;
 struct NAME* name;
 int Compare(const void* A, const void* B);
 */
+/*
+void Merge(int start, int T, int N);
+void MergeSort(int start, int T, int N);
+
+typedef struct LOCATION {
+	int x;
+	int y;
+}LOCATION;
+LOCATION Sort[210000];
+LOCATION Temp[210000];
+*/
 int main(void)
 {
+	/* 좌표정렬
+	int N;
+	scanf_s("%d", &N);
+	for (int i = 0; i < 210000; i++)
+	{
+		Sort[i].x = 1000001;
+		Sort[i].y = 1000001;
+		Temp[i].x = 0;
+		Temp[i].y = 0;
+	}
+	for (int i = 0; i < N; i++)
+	{
+		scanf_s("%d %d", &Sort[i].x, &Sort[i].y);
+	}
+
+	MergeSort(0, 2, N);
+
+	for (int i = 0; i < N; i++)
+	{
+		printf("%d %d\n", Sort[i].x, Sort[i].y);
+	}
+	*/
 	/*
 	int N;
 	scanf_s("%d", &N);
@@ -178,7 +211,7 @@ int main(void)
 		scanf_s("%d", &Sort[i]);
 	}
 
-	//MergeSort(0, 2, N);
+	MergeSort(0, 2, N);
 
 	printf("\n");
 	for (int i = 0; i < N; i++)
@@ -353,6 +386,167 @@ void Merge(int start, int T, int N)
 			for (int i = start; i <= end; i++)
 			{
 				Sort[i] = Temp[i];
+			}
+		}
+		end += T, start += T;
+		i = start, k = start;
+		mid += T, j = mid + 1;
+	}
+}
+void MergeSort(int start, int T, int N)
+{
+	Merge(start, T, N);
+	if (T >= N)
+		return;
+	else
+		MergeSort(start, T * 2, N);
+}
+*/
+/*
+void Merge(int start, int T, int N)
+{
+	int end = T - 1;
+	int mid = (start + end) / 2;
+	int i = start, k = start;
+	int j = mid + 1;
+	int flag; // 반복문 탈출시키기 위한 변수.
+	while (1) // 이 부분이 핵심!
+	{
+		if (end > N - 1)
+		{
+			while (k <= end)
+			{
+				flag = 0;
+				if (Sort[i].x < Sort[j].x && j <= end && i < mid + 1)
+				{
+					Temp[k].x = Sort[i].x;
+					Temp[k].y = Sort[i].y;
+					k++;
+					i++;
+					flag = 1;
+				}
+				else if (Sort[i].x > Sort[j].x && j <= end && i < mid + 1)
+				{
+					Temp[k].x = Sort[j].x;
+					Temp[k].y = Sort[j].y;
+					k++;
+					j++;
+					flag = 1;
+				}
+				else if (Sort[i].x == Sort[j].x && j <= end && i < mid + 1)
+				{
+					if (Sort[i].y < Sort[j].y && j <= end && i < mid + 1)
+					{
+						Temp[k].x = Sort[i].x;
+						Temp[k].y = Sort[i].y;
+						k++;
+						i++;
+						flag = 1;
+					}
+					else if (Sort[i].y > Sort[j].y && j <= end && i < mid + 1)
+					{
+						Temp[k].x = Sort[j].x;
+						Temp[k].y = Sort[j].y;
+						k++;
+						j++;
+						flag = 1;
+					}
+				}
+				if (j > end) // 두 영역중 앞부분이 남아있는 경우.
+				{
+					while (i < mid + 1)
+					{
+						Temp[k].x = Sort[i].x;
+						Temp[k].y = Sort[i].y;
+						k++;
+						i++;
+					}
+					flag = 1;
+				}
+				else if (i >= mid + 1) // 두 영역중 뒷부분이 남아있는 경우.
+				{
+					while (j <= end)
+					{
+						Temp[k].x = Sort[j].x;
+						Temp[k].y = Sort[j].y;
+						k++;
+						j++;
+					}
+					flag = 1;
+				}
+				if (flag == 0)
+					return;
+			}
+			for (int i = start; i <= end; i++)
+			{
+				Sort[i].x = Temp[i].x;
+				Sort[i].y = Temp[i].y;
+
+			}
+			return;
+		}
+		else
+		{
+			while (k <= end)
+			{
+				if (Sort[i].x < Sort[j].x && j <= end && i < mid + 1)
+				{
+					Temp[k].x = Sort[i].x;
+					Temp[k].y = Sort[i].y;
+					k++;
+					i++;
+				}
+				else if (Sort[i].x > Sort[j].x && j <= end && i < mid + 1)
+				{
+					Temp[k].x = Sort[j].x;
+					Temp[k].y = Sort[j].y;
+					k++;
+					j++;
+
+				}
+				else if (Sort[i].x == Sort[j].x && j <= end && i < mid + 1)
+				{
+					if (Sort[i].y < Sort[j].y && j <= end && i < mid + 1)
+					{
+						Temp[k].x = Sort[i].x;
+						Temp[k].y = Sort[i].y;
+						k++;
+						i++;
+					}
+					else if (Sort[i].y > Sort[j].y && j <= end && i < mid + 1)
+					{
+						Temp[k].x = Sort[j].x;
+						Temp[k].y = Sort[j].y;
+						k++;
+						j++;
+
+					}
+				}
+				if (j > end) // 두 영역중 앞부분이 남아있는 경우.
+				{
+					while (i < mid + 1)
+					{
+						Temp[k].x = Sort[i].x;
+						Temp[k].y = Sort[i].y;
+						k++;
+						i++;
+					}
+				}
+				else if (i >= mid + 1) // 두 영역중 뒷부분이 남아있는 경우.
+				{
+					while (j <= end)
+					{
+						Temp[k].x = Sort[j].x;
+						Temp[k].y = Sort[j].y;
+						k++;
+						j++;
+					}
+				}
+			}
+			for (int i = start; i <= end; i++)
+			{
+				Sort[i].x = Temp[i].x;
+				Sort[i].y = Temp[i].y;
 			}
 		}
 		end += T, start += T;
